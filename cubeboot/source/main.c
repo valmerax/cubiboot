@@ -357,6 +357,8 @@ int main(int argc, char **argv) {
     set_patch_value(symshdr, syment, symstringdata, "preboot_delay_ms", settings.preboot_delay_ms);
     set_patch_value(symshdr, syment, symstringdata, "postboot_delay_ms", settings.postboot_delay_ms);
 
+    set_patch_value(symshdr, syment, symstringdata, "menu_grid_type", settings.menu_grid_type);
+
     // Copy other variables
     set_patch_value(symshdr, syment, symstringdata, "is_running_dolphin", is_running_dolphin);
 
