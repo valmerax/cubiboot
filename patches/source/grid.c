@@ -22,7 +22,7 @@ __attribute_data__ menu_grid_type_t menu_grid_type;
 
 bool grid_setup_done = false;
 int columns_per_line = 8;
-line_backing_t browser_lines[MAX_LINES]; 
+__attribute_data_empty__ line_backing_t browser_lines[MAX_LINES];
 
 // ===============================================================================
 
