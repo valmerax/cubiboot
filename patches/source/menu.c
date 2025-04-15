@@ -846,24 +846,8 @@ __attribute_used__ s32 handle_gameselect_inputs() {
     }
 
     if (current_gameselect_state == SUBMENU_GAMESELECT_LOADER) {
-        if (pad_status->analog_down & ANALOG_RIGHT) {
-            if ((selected_slot % 8) != (8 - 1)) {
-                Jac_PlaySe(SOUND_CARD_MOVE);
-                selected_slot++;
-            } else if (!*is_key_repeat) {
-                Jac_PlaySe(SOUND_CARD_ERROR);
-            }
-        }
-
-        if (pad_status->analog_down & ANALOG_LEFT) {
-            if ((selected_slot % 8) != 0) {
-                Jac_PlaySe(SOUND_CARD_MOVE);
-                selected_slot--;
-            } else if (!*is_key_repeat) {
-                Jac_PlaySe(SOUND_CARD_ERROR);
-            }
-        }
-
+        // Handle vertical inputs first, followed by horizontal inputs
+        // This allows the sound effect for horizontal input to take priority (matching the memory card menu)
         if (pad_status->analog_down & ANALOG_DOWN) {
             if (number_of_lines - top_line_num != 4 || (selected_slot + 8) < (number_of_lines * 8)) {
                 Jac_PlaySe(SOUND_CARD_MOVE);
@@ -903,6 +887,24 @@ __attribute_used__ s32 handle_gameselect_inputs() {
             
             // OSReport("top_line_num = %d\n", top_line_num);
             // OSReport("selected_slot = %d\n", selected_slot);
+        }
+
+        if (pad_status->analog_down & ANALOG_RIGHT) {
+            if ((selected_slot % 8) != (8 - 1)) {
+                Jac_PlaySe(SOUND_CARD_MOVE);
+                selected_slot++;
+            } else if (!*is_key_repeat) {
+                Jac_PlaySe(SOUND_CARD_ERROR);
+            }
+        }
+
+        if (pad_status->analog_down & ANALOG_LEFT) {
+            if ((selected_slot % 8) != 0) {
+                Jac_PlaySe(SOUND_CARD_MOVE);
+                selected_slot--;
+            } else if (!*is_key_repeat) {
+                Jac_PlaySe(SOUND_CARD_ERROR);
+            }
         }
     }
 
