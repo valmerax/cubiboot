@@ -105,4 +105,4 @@ ntsc10_EXISync = 0x81335134;
 ntsc10_EXIImm = 0x81334d4c;
 ntsc10_EXIImmEx = 0x81334fa8;
 
-ntsc10_is_key_repeat = 0x8145d5e0;
+ntsc10_is_key_repeat = 0x81302ef8;

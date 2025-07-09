@@ -100,4 +100,4 @@ ntsc12_001_EXISync = 0x81363f4c;
 ntsc12_001_EXIImm = 0x81363b64;
 ntsc12_001_EXIImmEx = 0x81363dc0;
 
-ntsc12_001_is_key_repeat = 0x81483538;
+ntsc12_001_is_key_repeat = 0x8130317c;
