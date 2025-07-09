@@ -102,4 +102,4 @@ pal10_EXISync = 0x8135e13c;
 pal10_EXIImm = 0x8135dd54;
 pal10_EXIImmEx = 0x8135dfb0;
 
-pal10_is_key_repeat = 0x814ad300;
+pal10_is_key_repeat = 0x81302de0;

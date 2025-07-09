@@ -48,7 +48,7 @@ __attribute_reloc__ model_data *save_empty;
 // for audio
 __attribute_reloc__ void (*Jac_PlaySe)(u32);
 __attribute_reloc__ void (*Jac_StopSoundAll)();
-__attribute_reloc__ u32* is_key_repeat;
+__attribute_reloc__ bool (*is_key_repeat)();
 
 // for model gx
 __attribute_reloc__ void (*model_init)(model* m, int process);
@@ -861,7 +861,7 @@ __attribute_used__ s32 handle_gameselect_inputs() {
                 } else {
                     selected_slot += 8;
                 }
-            } else if (!*is_key_repeat) {
+            } else if (!is_key_repeat()) {
                 // OSReport("SKIP MOVE DOWN: top_line_num = %d\n", top_line_num);
                 Jac_PlaySe(SOUND_CARD_ERROR);
             }
@@ -880,11 +880,11 @@ __attribute_used__ s32 handle_gameselect_inputs() {
                 } else {
                     selected_slot -= 8;
                 }
-            } else if (!*is_key_repeat) {
+            } else if (!is_key_repeat()) {
                 // OSReport("SKIP MOVE UP: top_line_num = %d\n", top_line_num);
                 Jac_PlaySe(SOUND_CARD_ERROR);
             }
-            
+
             // OSReport("top_line_num = %d\n", top_line_num);
             // OSReport("selected_slot = %d\n", selected_slot);
         }
@@ -893,7 +893,7 @@ __attribute_used__ s32 handle_gameselect_inputs() {
             if ((selected_slot % 8) != (8 - 1)) {
                 Jac_PlaySe(SOUND_CARD_MOVE);
                 selected_slot++;
-            } else if (!*is_key_repeat) {
+            } else if (!is_key_repeat()) {
                 Jac_PlaySe(SOUND_CARD_ERROR);
             }
         }
@@ -902,7 +902,7 @@ __attribute_used__ s32 handle_gameselect_inputs() {
             if ((selected_slot % 8) != 0) {
                 Jac_PlaySe(SOUND_CARD_MOVE);
                 selected_slot--;
-            } else if (!*is_key_repeat) {
+            } else if (!is_key_repeat()) {
                 Jac_PlaySe(SOUND_CARD_ERROR);
             }
         }
