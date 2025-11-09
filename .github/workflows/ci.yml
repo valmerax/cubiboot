@@ -9,15 +9,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup
         run: |
-          apt-get update && apt-get install -y genisoimage git golang nodejs build-essential gcc-arm-none-eabi python3-venv python3-distutils python3-setuptools
-          python3 -m venv venv
-          . ./venv/bin/activate
-          pip install --upgrade pip
-          pip install -r patches/scripts/requirements.txt
+          apt-get update && apt-get install -y genisoimage git golang nodejs build-essential gcc-arm-none-eabi python3-pyelftools
       - name: Build cubeboot
-        run: |
-          . ./venv/bin/activate
-          cd entry; make clean && make
+        run: cd entry; make clean && make
       # - name: Build apploader
       #   run: |
       #     git clone -b force-early-boot --single-branch https://github.com/OffBroadway/gc-boot-tools.git
